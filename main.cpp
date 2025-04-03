@@ -1,22 +1,34 @@
 #include <iostream>
+#include <string>
 
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+void test();
+class Fraction;
+
+
+
+class Fraction {
+    public:
+    int numerator;
+    int denominator;
+
+    Fraction(int numerator, int denominator): numerator(numerator), denominator(denominator) { }
+
+
+};
+
+Fraction reduce(Fraction input); //a/b fraction
+
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the
-    // <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
-
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code.
-        // We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-        // breakpoint for you, but you can always add more by pressing
-        // <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
-
+    test();
+    Fraction num1(2, 4 );
+    std::cout << num1.to_string() << std::endl;
     return 0;
+}
+void test(){
+    //Reduce given fraction to minimum terms.
+    //e.g. 2/4 -> 1/2   6/6 -> 1/1   1/0 -> 0(error)
 }
 
 // TIP See CLion help at <a
