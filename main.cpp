@@ -28,29 +28,66 @@ bool is_prime_number(int num){
     return true;
 }
 
+ /* Part of Exercise three*/
+int greatestCommonDivider(int x, int y) { //Researched the Euclidean algorithm for this
+
+    while(y!=0) {
+        int temp = y;
+        y = x % y; //Until remainder is 0
+        x = temp;
+    }
+    return x;
+}
+void reduceFraction(int num, int den) {
+    if (den == 0) {
+        cout << "Denominator cannot be 0." << endl;
+    }
+
+    int divisor = greatestCommonDivider(abs(num), abs(den)); //The abs() function is used because my research said that this number should be positive
+
+    num /= divisor; //Dividing the numerator and denominator by the greatest common divider gives us the fraction in its most reduced form
+    den /= divisor;
+
+    if (den < 0) { //Ensure that denominator is never negative and also if both are negative it cancels out
+        num = -num;
+        den = -den;
+    }
+    cout << "The reduced fraction is: " << num << "/" << den << endl;
+
+}
+
 int main(){
     /* Exercise one*/
     cout << "Pleaser enter a number: " << endl;
-    int num;
-    cin >> num;
-    bool result = is_power_of_2(num);
-    if(result == true){
-        cout << "The given number is a power of 2";
+    int potentialPowerNum;
+    cin >> potentialPowerNum;
+    bool powerResult = is_power_of_2(potentialPowerNum);
+    if(powerResult == true){
+        cout << "The given number is a power of 2" << endl;
     } else {
-        cout << "The given number is not a power of 2";
+        cout << "The given number is not a power of 2" << endl;
     }
 
     /* Exercise two */
-    int num = 11;
-    bool result = is_prime_number(num);
-    if(result == true){
-        cout << "Pass!" << endl;
+    cout << "Please enter a number: " << endl;
+    int potentialPrimeNum;
+    cin >> potentialPrimeNum;
+    bool primeResult = is_prime_number(potentialPrimeNum);
+    if(primeResult == true){
+        cout << potentialPrimeNum << ": Pass!" << endl;
     } else {
-        cout << "Fail!" << endl;
+        cout << potentialPrimeNum << ": Fail!" << endl;
     }
 
     /* Exercise three */
+    cout << "Please enter a number for a numerator: " << endl;
+    int numerator;
+    cin >> numerator;
+    cout << "Please enter a number for a denominator: " << endl;
+    int denominator;
+    cin >> denominator;
 
+    reduceFraction(numerator, denominator);
 
 
 
